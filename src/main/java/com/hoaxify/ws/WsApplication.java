@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WsApplication {
 
 	public static void main(String[] args) {
+		// Test Comment
 		SpringApplication.run(WsApplication.class, args);
 	}
 
