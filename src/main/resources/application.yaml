@@ -1,7 +1,17 @@
+#spring:
+#  datasource:
+#    generate-unique-name: false
+#    url: jdbc:h2:./devdb
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
 spring:
   datasource:
     generate-unique-name: false
-    url: jdbc:h2:./devdb
   jpa:
-    hibernate:
-      ddl-auto: update
+    properties:
+      javax:
+        persistence:
+           validation:
+            mode: none
+      

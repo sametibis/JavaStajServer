@@ -30,7 +30,7 @@ public class UserController {
 	public GenericResponse createUser(@Valid @RequestBody User user) {
 		userService.save(user);
 		GenericResponse response = new GenericResponse();
-		response.setMessage("User created: " + user);
+		response.setMessage("User created: ");
 		return response;
 	}
 	
