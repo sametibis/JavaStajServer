@@ -3,6 +3,8 @@ package com.hoaxify.ws.user;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
 public class User {
@@ -10,7 +12,9 @@ public class User {
 	@Id
 	@GeneratedValue
 	private long id;
+	@NotNull
 	private String userName;
+	@NotNull
 	private String displayName;
 	private String password;
 

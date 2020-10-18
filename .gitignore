@@ -33,3 +33,4 @@ build/
 .vscode/
 /devdb.mv.db
 /devdb.trace.db
+.metadata/
