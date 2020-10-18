@@ -24,14 +24,25 @@ public class UserController {
 	@PostMapping("/api//1.0/users")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> createUser(@RequestBody User user) {
+		
+		ApiError error = new ApiError(400, "Validation Error", "/api/1.0/users");
+		Map<String, String> validationErrors = new HashMap<String, String>();
+		
 		String userName = user.getUserName();
+		String displayName = user.getDisplayName();
+
 		if(userName == null || userName.isEmpty()) {
-			ApiError error = new ApiError(400, "Validation Error", "/api/1.0/users");
-			Map<String, String> validationErrors = new HashMap<String, String>();
-			validationErrors.put("userName", "Username can not be null.");
+			validationErrors.put("userName", "User name can not be null.");
+		}
+		
+		if(displayName == null || displayName.isEmpty()) {
+			validationErrors.put("displayName", "Display name can not be null.");
+		}
+		if(validationErrors.size() > 0) {
 			error.setValidationError(validationErrors);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
 		}
+		
 		userService.save(user);
 		GenericResponse response = new GenericResponse();
 		response.setMessage("User created: " + user);
