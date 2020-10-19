@@ -5,14 +5,14 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class UniqueUserNameValidator implements ConstraintValidator<UniqueUserName, String> {
+public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 	
 	@Autowired
 	IUserRepository userRepository;
 	
 	@Override
-	public boolean isValid(String userName, ConstraintValidatorContext context) {
-		User user = userRepository.findByUserName(userName);
+	public boolean isValid(String username, ConstraintValidatorContext context) {
+		User user = userRepository.findByUsername(username);
 		if(user != null) {
 			return false;
 		}

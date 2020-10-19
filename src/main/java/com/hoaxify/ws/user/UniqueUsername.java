@@ -11,8 +11,8 @@ import javax.validation.Payload;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = { UniqueUserNameValidator.class })
-public @interface UniqueUserName {
+@Constraint(validatedBy = { UniqueUsernameValidator.class })
+public @interface UniqueUsername {
 	String message() default "Username must be unique.";
 
 	Class<?>[] groups() default { };
