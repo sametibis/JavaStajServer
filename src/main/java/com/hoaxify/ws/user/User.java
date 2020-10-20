@@ -13,9 +13,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.hoaxify.ws.shared.Views;
 
 
 @Entity
@@ -33,26 +30,22 @@ public class User implements UserDetails {
 	@NotNull
 	@Size(min = 4, max = 25)
 	@UniqueUsername
-	@JsonView(Views.Base.class)
 	private String username;
 	
 	@NotNull
 	@Size(min = 4, max = 25)
-	@JsonView(Views.Base.class)
 	private String displayName;
 	
 	@NotNull
-	@Size(min = 8, max = 255)
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$" , message = "{hoaxify.constrain.password.Pattern.message}")
-	@JsonIgnore
+	@Size(min = 8, max=255)
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message="{hoaxify.constrain.password.Pattern.message}")
 	private String password;
 	
-	@JsonView(Views.Base.class)
 	private String image;
 	
 
 	public User() {
-		
+		super();
 	}
 
 	public User(String username, String displayName, String password) {
@@ -80,7 +73,7 @@ public class User implements UserDetails {
 		this.displayName = displayName;
 	}
 
-
+	
 	public String getPassword() {
 		return password;
 	}
